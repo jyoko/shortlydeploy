@@ -30,7 +30,13 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'public/dist/built.js':['public/lib/jquery.js','public/lib/underscore.js','public/lib/*.js', 'public/client/*.js']
+          'public/dist/built.js':[
+            'public/lib/jquery.js',
+            'public/lib/underscore.js',
+            'public/lib/handlebars.js',
+            'public/lib/backbone.js',
+            'public/client/*.js'
+          ]
         }
       }
     },
