@@ -31,12 +31,14 @@
 </script>
 
 <script>
+  $(function(){
+    new Shortly();
+  });
+
   window.Templates = {};
   $('[type="text/x-handlebars-template"]').each(function(index, div){
     Templates[div.id] = Handlebars.compile(div.innerHTML);
   });
-
-  $(function(){
-    new Shortly();
-  });
 </script>
+
+<script src='dist/client.js'></script>
