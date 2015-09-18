@@ -8,6 +8,23 @@ var userSchema = db.Schema({
   password: String,
 });
 
+userSchema.pre('save', function(next) {
+  bcrypt.hash(this.password,null,null,function(err,hash) {
+    this.password = hash;
+    next();
+  }.bind(this));
+});
+
+userSchema.methods.comparePassword = function(attempt, callback) {
+  bcrypt.compare(attempt,this.password, function(err,isMatch) {
+    callback(isMatch);
+  });
+};
+
+userSchema.methods.hashPassword = function(cb) {
+  bcrypt.hash(this.password,null,null,cb);
+};
+
 var User = db.model('users',userSchema);
 
         // user.increments('id').primary();
